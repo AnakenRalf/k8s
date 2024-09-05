@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: k8s-web-to-nginx
-          image: anakenr/k8s-web-to-nginx
+          image: anakenr/k8s-web-to-nginx:latest
           resources:
             limits:
               memory: "128Mi"
