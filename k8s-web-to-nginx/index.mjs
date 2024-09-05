@@ -1,4 +1,3 @@
-
 import express from "express";
 import os from "os";
 
@@ -16,6 +15,25 @@ app.get("/nginx", async (req, res) => {
   const responce = await fetch(url);
   const text = await responce.text();
   res.send(text);
+});
+
+app.get("/placeholder", async (req, res) => {
+  const url = "https://jsonplaceholder.typicode.com/todos/1";
+  const responce = await fetch(url);
+  const json = await responce.json();
+
+  // {
+  //   "userId": 1,
+  //   "id": 1,
+  //   "title": "delectus aut autem",
+  //   "completed": false
+  // }
+
+  const { userId, id, title, completed } = json;
+  console.log(userId, id, title, completed);
+  res.send(
+    `<h2>UserId: ${userId}</h2><h2>Id: ${id}</h2><h2>Title: ${title}</h2><h2>Completed: ${completed}</h2>`
+  );
 });
 
 app.listen(PORT, () => {
